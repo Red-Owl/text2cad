@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <input id="command" type="text" placeholder="Inserisci comando">
+    <button onclick="sendCommand()">Invia</button>
+    <script>
+        const ws = new WebSocket("ws://localhost:8765");
+        ws.onmessage = (event) => console.log(event.data);
+        function sendCommand() {
+            const cmd = document.getElementById("command").value;
+            ws.send(cmd);
+        }
+    </script>
+</body>
+</html>
